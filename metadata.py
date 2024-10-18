@@ -94,10 +94,3 @@ def add_dataplex_catalog_aspect_to_entry(bq_object_name, aspect_type, metadata):
 
     # Handle the response
     print(response)
-
-
-print(f"\nEntryID\n{entry_id}\n")
-list_tag_response = get_data_catalog_entry_tag(entry_id)
-print(f"\nEntryResponse\n{list_tag_response}\n")
-tag_fields = extract_data_catalog_tag(list_tag_response, data_catalog_tag_template)
-add_dataplex_catalog_aspect_to_entry(bq_object_name, dataplex_aspect_type, tag_fields)
