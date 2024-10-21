@@ -11,8 +11,8 @@ Assumes:
 Python code using the Google Python clients is given in the metatdata.py file
 
 ### Getting the Data Catalog Entry ID
-- The key API  endpoint: https://cloud.google.com/data-catalog/docs/reference/rest/v1/catalog/search
-- The key Python client method here is the search_catalog  https://cloud.google.com/python/docs/reference/datacatalog/latest/google.cloud.datacatalog_v1.services.data_catalog.DataCatalogClient#google_cloud_datacatalog_v1_services_data_catalog_DataCatalogClient_search_catalog
+- the key API  endpoint: https://cloud.google.com/data-catalog/docs/reference/rest/v1/catalog/search
+- the key Python client method here is the search_catalog  https://cloud.google.com/python/docs/reference/datacatalog/latest/google.cloud.datacatalog_v1.services.data_catalog.DataCatalogClient#google_cloud_datacatalog_v1_services_data_catalog_DataCatalogClient_search_catalog
 
 ### Getting the Entry Tags
 If you have a Data Catalog Entry ID you can then get the tags attached to this entry.
