@@ -66,6 +66,13 @@ def extract_data_catalog_tag(list_tag_response):
     return tag_fields
 
 def add_dataplex_catalog_aspect_to_entry(bq_object_name, aspect_type, metadata):
+    ''' Adds metadata to a BigQuery dataset or table entry using a Dataplex Catalog Aspect
+
+    bq_object_name (str): BigQuery table or dataset in <project>.<dataset>.<table> format
+    aspect_type (str): the Dataplex Aspect type in projects/<project>/locations/<location>/ format
+    metadata (dict): the metadata you want to attach to the BQ object in Key:value pairs that coorespond to the fields in the Aspect Type template
+    
+    '''
     bq_object_name_list = bq_object_name.split(".")
     if len(bq_object_name_list) == 2:
         fqn = f"bigquery.googleapis.com/projects/{bq_object_name_list[0]}/datasets/{bq_object_name_list[1]}"
