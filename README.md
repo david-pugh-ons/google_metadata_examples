@@ -30,6 +30,28 @@ We assume that an Aspect Type (a metadata template) exists that has the same nam
 - key method UpdateEntryRequest https://cloud.google.com/python/docs/reference/dataplex/latest/google.cloud.dataplex_v1.services.catalog_service.CatalogServiceClient#google_cloud_dataplex_v1_services_catalog_service_CatalogServiceClient_update_entry
 
 
+### A Note on reading Dataplex Aspects
+You can retrieve the Aspects attached to an entry with the Dataplex API using the ```dataplex_v1.GetEntryRequest``` https://cloud.google.com/dataplex/docs/reference/rpc/google.cloud.dataplex.v1#getentryrequest 
+
+Note that there are options on how you want the aspects to be shown when you make this request using the ```view``` parameter. This defaults to FULL, meansing that it will return all aspects associated with an entry, but for optional apsects (ie the ones we have attached) it will only return the aspect keys - the aspect will look as if it have no information! This can be confusing. To retrieve all aspects and all values then use ```view = ALL```. It is also possible to only return specific aspects - this can be useful if you only want a specific piece of information that is on a optional or required aspect. For example, you wany want to understand the sensitivity and expiry date on a table rather than return the schemea and storage information. In that case you can select ```view=CUSTOM``` and add the name of the aspect type in the ```aspects``` parameter.
+
+```
+from google.cloud import dataplex_v1
+
+client = dataplex_v1.CatalogServiceClient()
+
+# Initialize request argument(s)
+request = dataplex_v1.GetEntryRequest(
+    name="projects/my-project/locations/europe-west2/entryGroups/@bigquery/entries/bigquery.googleapis.com/projects/my-project/datasets/my_dataset/tables/my_table",
+    view="CUSTOM", 
+    aspect_types=["projects/1015617284280/locations/europe-west2/aspectTypes/my_aspect_type"]
+)
+entry = client.get_entry(
+    request=request
+)
+
+```
+
 ## Example use
 
 ```
